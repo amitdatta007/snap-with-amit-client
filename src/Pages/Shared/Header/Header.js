@@ -8,7 +8,7 @@ import { HiSun, HiMoon, HiUser } from 'react-icons/hi';
 const Header = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [open, setOpen] = useState(false);
-    const { user, logOut } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     console.log(document.querySelector('html'))
 
@@ -21,7 +21,7 @@ const Header = () => {
     }, [isDarkMode])
 
     const handleLogout = () => {
-        logOut();
+        // logOut();
         setOpen(false);
     };
 
@@ -47,7 +47,7 @@ const Header = () => {
                                 <div className='flex items-center gap-6'>
                                     {
                                         user.photoURL ? <div>
-                                            <img src={user.photoURL} alt="" className='user-img'/>
+                                            <img src={user.photoURL} alt="" className='w-[32px] h-[32px] rounded-full'/>
                                         </div> : <div className='default-user-img' data-tip="React-tooltip">
                                             <HiUser />
                                         </div>

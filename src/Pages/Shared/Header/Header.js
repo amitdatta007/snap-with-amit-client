@@ -8,7 +8,7 @@ import { HiSun, HiMoon, HiUser } from 'react-icons/hi';
 const Header = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [open, setOpen] = useState(false);
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     console.log(document.querySelector('html'))
 
@@ -21,7 +21,7 @@ const Header = () => {
     }, [isDarkMode])
 
     const handleLogout = () => {
-        // logOut();
+        logOut();
         setOpen(false);
     };
 
@@ -61,7 +61,7 @@ const Header = () => {
                         }
 
                     </div>
-                    <div className='z-20 theme-icon' onClick={() => setIsDarkMode(!isDarkMode)}>
+                    <div className='z-20 theme-icon text-2xl' onClick={() => setIsDarkMode(!isDarkMode)}>
                         {
                             isDarkMode ? <HiMoon /> : <HiSun />
 

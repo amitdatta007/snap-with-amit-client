@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, updateProfile} from 'firebase/auth';
+import {createUserWithEmailAndPassword, FacebookAuthProvider, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from 'firebase/auth';
 import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
@@ -9,6 +9,10 @@ const UserContext = ({ children }) => {
     const [user, setUser] = useState(null);
     const [profileUpdated, setProfileUpdated] = useState(false);
     const [loading, setLoading] = useState(true);
+
+    // custom auth provider
+    const googleProvider = new GoogleAuthProvider();
+    const facebookProvider = new FacebookAuthProvider();
 
 
     // sign in and update profile
@@ -32,19 +36,23 @@ const UserContext = ({ children }) => {
     };
 
     // logout
-
     
+    const logOut = () => {
+        return signOut(auth);
+    };
 
+    // third party log in method
 
+    const handleGoogleLogin = () => {
+        setLoading(true);
+        return signInWithPopup(auth, googleProvider);
+    };
+    const handleFacebookLogin = () => {
+        setLoading(true);
+        return signInWithPopup(auth, facebookProvider);
+    };
 
-
-
-
-
-
-
-
-
+    // user observer
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -57,7 +65,9 @@ const UserContext = ({ children }) => {
     }, [profileUpdated]);
 
 
-    const value = {createUser, updateUser, profileUpdated, setProfileUpdated, user, signIn};
+    // all values send by context
+
+    const value = {createUser, updateUser, profileUpdated, setProfileUpdated, user, signIn, logOut, loading, handleGoogleLogin, handleFacebookLogin};
 
     return (
         <AuthContext.Provider value={value}>

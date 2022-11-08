@@ -1,10 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import lottie from 'lottie-web';
 import { FaFacebook } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
+import { AuthContext } from '../../../Contexts/UserContext';
 
 const Login = () => {
+    const [error, setError] = useState(null);
+    const { signIn } = useContext(AuthContext);
 
     const container = useRef(null);
     useEffect(() => {
@@ -23,8 +26,25 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(email, password);
-    }
+        if (password.length < 6) {
+            setError('Password Should be 6 Character or More.');
+            return;
+        };
+        signIn(email, password)
+            .then(() => {
+                form.reset();
+            })
+            .catch(err => {
+                console.log(err.code)
+                if (err.code === 'auth/user-not-found') {
+                    setError('User Not Found!');
+
+                };
+                if (err.code === 'auth/wrong-password') {
+                    setError('Wrong Password!');
+                };
+            });
+    };
 
     return (
         <div className="hero">

@@ -2,18 +2,21 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Contexts/UserContext.js'
 import Review from './Review.js';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ServiceReview = ({ service }) => {
     const [reviews, setReviews] = useState([]);
     const { user } = useContext(AuthContext);
     const { _id } = service;
+    const [rev, setRev] = useState(false)
 
 
     useEffect(() => {
         fetch(`http://localhost:5000/reviews/${_id}`)
             .then(res => res.json())
             .then(data => setReviews(data));
-    }, []);
+    }, [rev]);
 
     const handleReview = e => {
         e.preventDefault();
@@ -36,6 +39,17 @@ const ServiceReview = ({ service }) => {
             .then(res => res.json())
             .then(data => {
                 form.reset();
+                setRev(!rev);
+                toast.success('Review Succesfully Added', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
             });
     };
 
@@ -67,6 +81,18 @@ const ServiceReview = ({ service }) => {
                         <Link className='btn' to='/login'>Login to Review</Link>
                 }
             </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     );
 };

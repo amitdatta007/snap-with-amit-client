@@ -1,5 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditReview = () => {
 
@@ -24,8 +26,17 @@ const EditReview = () => {
         })
             .then(res => res.json())
             .then(data => {
-
-            })
+                toast.success('Review Succesfully Added', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            });
     };
     return (
         <div className='my-12'>
@@ -42,6 +53,18 @@ const EditReview = () => {
                 <textarea name='review' defaultValue={review.review} className="textarea w-full h-32 textarea-bordered resize-none" placeholder="Review the Service" required></textarea>
                 <button type="submit" className='btn'>Update</button>
             </form>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     );
 };

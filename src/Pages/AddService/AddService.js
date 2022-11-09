@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
     const [error, setError] = useState(null);
@@ -6,6 +8,7 @@ const AddService = () => {
 
     const addService = e => {
         e.preventDefault();
+        const form = e.target;
         setError(null);
         if (service?.rating > 5) {
             setError('Rating can be 5 or lower.');
@@ -18,10 +21,22 @@ const AddService = () => {
             },
             body: JSON.stringify(service)
         })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        });
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    form.reset();
+                    toast.success('Service Succesfully Added', {
+                        position: "top-center",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                }
+            });
     };
 
     const handleInputBlur = e => {
@@ -49,6 +64,18 @@ const AddService = () => {
                     <button className='btn'>Add Service</button>
                 </form>
             </div>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     );
 };

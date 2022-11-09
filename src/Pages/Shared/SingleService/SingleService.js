@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {FaStar} from 'react-icons/fa';
 
 const SingleService = ({ service }) => {
-    const { name, rating, imageUrl, description, price } = service;
+    const { name, rating, imageUrl, description, price, _id } = service;
     return (
         <div className="card card-compact w-full max-w-xl bg-base-100 shadow-xl mx-auto">
             <figure><img className='w-full' src={imageUrl} alt="Shoes" /></figure>
@@ -14,7 +14,7 @@ const SingleService = ({ service }) => {
                     <div className='flex items-center text-[#FBBD23] font-semibold' >Rating: {rating} <FaStar /> </div>
                     <div className='text-2xl text-[#FBBD23] font-bold w-[fit-content]'>${price}</div>
                 </div>
-                <Link to='/' className="btn btn-primary">View Details</Link>
+                <Link to={`/service/${_id}`} className="btn btn-primary">View Details</Link>
             </div>
         </div>
     );

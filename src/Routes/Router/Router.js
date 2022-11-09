@@ -2,6 +2,7 @@ import {createBrowserRouter} from 'react-router-dom';
 import Main from '../../Layouts/Main';
 import AddService from '../../Pages/AddService/AddService';
 import Blogs from '../../Pages/Blogs/Blogs';
+import EditReview from '../../Pages/EditReview/EditReview';
 import Home from '../../Pages/Home/Home/Home';
 import Login from '../../Pages/Login/Login/Login';
 import MyReviews from '../../Pages/MyReviews/MyReviews';
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
                 path: '/service/:id',
                 element: <ServiceDetails />,
                 loader: async({params}) => fetch(`http://localhost:5000/service/${params.id}`)
+            },
+            {
+                path: '/review/edit/:id',
+                element: <EditReview />,
+                loader: async({params}) => fetch(`http://localhost:5000/review/${params.id}`)
             }
         ]
     }

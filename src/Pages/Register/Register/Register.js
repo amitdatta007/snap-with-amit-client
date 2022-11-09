@@ -49,6 +49,7 @@ const Register = () => {
                     })
                     .catch(() => { });
                 form.reset();
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 if (err.code === 'auth/email-already-in-use') {

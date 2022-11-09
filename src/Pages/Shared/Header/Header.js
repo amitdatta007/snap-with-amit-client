@@ -6,17 +6,18 @@ import { Bars4Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { HiSun, HiMoon, HiUser } from 'react-icons/hi';
 
 const Header = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const darkModeData = localStorage.getItem('isDarkMode') || false;
+    const [isDarkMode, setIsDarkMode] = useState(darkModeData);
     const [open, setOpen] = useState(false);
     const { user, logOut } = useContext(AuthContext);
 
-    console.log(document.querySelector('html'))
-
     useEffect(() => {
         if(isDarkMode) {
-            document.querySelector('html').setAttribute('data-theme', 'night')
+            document.querySelector('html').setAttribute('data-theme', 'night');
+            localStorage.setItem('isDarkMode', true);
         } else{
-            document.querySelector('html').setAttribute('data-theme', 'winter')
+            document.querySelector('html').setAttribute('data-theme', 'winter');
+            localStorage.removeItem('isDarkMode');
         }
     }, [isDarkMode])
 
@@ -35,10 +36,11 @@ const Header = () => {
 
             <div className='flex items-center gap-6'>
                     <div
-                        className={`bg-base-100 flex absolute md:static w-full h-[calc(100vh-60px)] md:h-fit md:w-fit md:gap-8 left-0 black font-semibold ${open ? 'top-[60px]' : 'top-[-120vh]'} ${open ? 'z-10' : 'z-10'} flex-col md:flex-row justify-center items-center duration-700 ease-in-out gap-3 md:duration-[0s]`}
+                        className={`bg-base-100 flex absolute md:static w-full h-[calc(100vh-60px)] md:h-fit md:w-fit md:gap-8 left-0 black font-semibold ${open ? 'top-[60px]' : 'top-[-120vh]'} ${open ? 'z-10' : 'z-10'} flex-col md:flex-row justify-center items-center duration-700 ease-in-out gap-2 md:duration-[0s]`}
                     >
-                        <NavItem name='Courses' path='/catagory/06' setOpen={setOpen} />
-                        <NavItem name='FAQ' path='/faq' setOpen={setOpen} />
+                        <NavItem name='Services' path='/services' setOpen={setOpen} />
+                        <NavItem name='Add Service' path='/service/add' setOpen={setOpen} />
+                        <NavItem name='My Reviews' path='/reviews' setOpen={setOpen} />
                         <NavItem name='Blogs' path='/blogs' setOpen={setOpen} />
                         <div className='w-[1px] h-5 bg-base-content hidden md:block'></div>
 

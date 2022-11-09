@@ -9,7 +9,7 @@ const ServiceDetails = () => {
     return (
         <div className='flex flex-col md:flex-row my-12'>
             <ServiceInfo service={service} />
-            <ServiceReview />
+            <ServiceReview service={service} />
         </div>
     );
 };

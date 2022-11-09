@@ -13,7 +13,7 @@ const HomeServices = () => {
     return (
         <div className='flex flex-col items-center gap-8'>
             <h2 className='text-center text-3xl font-bold'>Services</h2>
-            <div className='w-full flex flex-col lg:flex-row items-center justify-between gap-6'>
+            <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center'>
                 {
                     services.map(service => <SingleService key={service._id} service={service} />)
                 }

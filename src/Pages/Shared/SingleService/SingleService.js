@@ -1,12 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {FaStar} from 'react-icons/fa';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const SingleService = ({ service }) => {
     const { name, rating, imageUrl, description, price, _id } = service;
     return (
         <div className="card card-compact w-full max-w-xl bg-base-100 shadow-xl mx-auto">
-            <figure><img className='w-full' src={imageUrl} alt="Shoes" /></figure>
+            <figure>
+                <PhotoProvider>
+                    <PhotoView src={imageUrl}>
+                    <img className='w-full' src={imageUrl} alt="Shoes" />
+                    </PhotoView>
+                </PhotoProvider>
+            </figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
                 <p>{description.slice(0, 90)} ...</p>

@@ -2,11 +2,11 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useTitle from '../../Hooks/useTitle';
 
 const EditReview = () => {
-
     const review = useLoaderData();
-    console.log(review)
+    useTitle('Edit Review | Snap With Amit');
 
     const handleReview = e => {
         e.preventDefault();

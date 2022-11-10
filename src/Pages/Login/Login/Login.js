@@ -4,6 +4,7 @@ import lottie from 'lottie-web';
 import { FaFacebook } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../../Contexts/UserContext';
+import useTitle from '../../../Hooks/useTitle';
 
 const Login = () => {
     const [error, setError] = useState(null);
@@ -11,6 +12,7 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
+    useTitle('Log in')
 
     const container = useRef(null);
     useEffect(() => {

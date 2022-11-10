@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import useTitle from '../../../Hooks/useTitle';
 import SingleService from '../../Shared/SingleService/SingleService';
 
 const Services = () => {
     const [services, setServices] = useState([]);
+    useTitle('Services')
     useEffect(() => {
         fetch('http://localhost:5000/services')
         .then(res => res.json())

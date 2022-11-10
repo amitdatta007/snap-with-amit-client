@@ -4,6 +4,7 @@ import lottie from 'lottie-web';
 import { FaFacebook } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../../Contexts/UserContext';
+import useTitle from '../../../Hooks/useTitle';
 
 const Register = () => {
     const [error, setError] = useState(null);
@@ -11,6 +12,7 @@ const Register = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
+    useTitle('Register')
 
     const container = useRef(null);
     useEffect(() => {

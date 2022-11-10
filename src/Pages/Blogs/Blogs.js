@@ -1,6 +1,8 @@
 import React from 'react';
+import useTitle from '../../Hooks/useTitle';
 
 const Blogs = () => {
+    useTitle('Blogs | Snap With Amit');
     return (
         <div className='my-12 flex flex-col gap-8'>
             <div className='p-8 flex flex-col gap-5 bg-base-200 rounded-lg'>

@@ -1,3 +1,29 @@
+# Span With Amit
+
+## Features
+- Home page with 3 services
+- Responsive navbar
+- theme toggle
+- Authentication
+- Add Services to backend
+- Load services from backend
+- add review
+- delete and edit review
+
+
+## Technology
+- React js
+- React Router
+- Firebase
+- Tailwind css
+- Daisy ui
+- React icons
+- Lottiefiles
+- React Toastify
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

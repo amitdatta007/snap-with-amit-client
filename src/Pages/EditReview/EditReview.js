@@ -17,7 +17,7 @@ const EditReview = () => {
         newReview['rating'] = rating;
         newReview['review'] = reviews;
 
-        fetch(`http://localhost:5000/review/${review._id}`, {
+        fetch(`https://snap-with-amit-server.vercel.app/review/${review._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

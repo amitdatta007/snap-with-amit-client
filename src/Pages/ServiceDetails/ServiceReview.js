@@ -13,7 +13,7 @@ const ServiceReview = ({ service }) => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${_id}`)
+        fetch(`https://snap-with-amit-server.vercel.app/reviews/${_id}`)
             .then(res => res.json())
             .then(data => setReviews(data));
     }, [rev]);
@@ -29,7 +29,7 @@ const ServiceReview = ({ service }) => {
         const userPhoto = user.photoURL;
         const reviewData = { rating, review, serviceId, userName, userEmail, userPhoto };
 
-        fetch('http://localhost:5000/review', {
+        fetch('https://snap-with-amit-server.vercel.app/review', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

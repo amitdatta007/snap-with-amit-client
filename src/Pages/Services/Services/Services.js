@@ -6,7 +6,7 @@ const Services = () => {
     const [services, setServices] = useState([]);
     useTitle('Services')
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://snap-with-amit-server.vercel.app/services')
         .then(res => res.json())
         .then(data => setServices(data));
     }, []);

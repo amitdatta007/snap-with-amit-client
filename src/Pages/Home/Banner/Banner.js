@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
+import {Link} from 'react-router-dom'
 
 const Banner = () => {
 
@@ -37,9 +38,9 @@ const Banner = () => {
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <div className='w-full' ref={container1}></div>
                         <div>
-                            <h1 className="text-5xl font-bold">Box Office News!</h1>
+                            <h1 className="text-5xl font-bold">Professional Photography</h1>
                             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                            <button className="btn btn-primary">Get Started</button>
+                            <Link to={'/services'} className="btn btn-primary">Services</Link>
                         </div>
                     </div>
                 </div>
@@ -53,9 +54,9 @@ const Banner = () => {
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <div className='w-full' ref={container2}></div>
                         <div>
-                            <h1 className="text-5xl font-bold">Box Office News!</h1>
+                            <h1 className="text-5xl font-bold">Product Photography</h1>
                             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                            <button className="btn btn-primary">Get Started</button>
+                            <Link to={'/services'} className="btn btn-primary">Services</Link>
                         </div>
                     </div>
                 </div>
@@ -69,9 +70,9 @@ const Banner = () => {
                     <div className="hero-content flex-col lg:flex-row-reverse">
                         <div className='w-full' ref={container3}></div>
                         <div>
-                            <h1 className="text-5xl font-bold">Box Office News!</h1>
+                            <h1 className="text-5xl font-bold">Drone Videos</h1>
                             <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                            <button className="btn btn-primary">Get Started</button>
+                            <Link to={'/services'} className="btn btn-primary">Services</Link>
                         </div>
                     </div>
                 </div>

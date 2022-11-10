@@ -13,7 +13,7 @@ const MyReviews = () => {
     useTitle('My Review')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myreview/${user.email}`)
+        fetch(`https://snap-with-amit-server.vercel.app/myreview/${user.email}`)
         .then(res => res.json())
         .then(data => setReviews(data))
     }, [del]);
@@ -21,7 +21,7 @@ const MyReviews = () => {
     const handleDelete = reviewId => {
         const sure = window.confirm('You Want to delete Review?')
         if(sure){
-            fetch(`http://localhost:5000/review/${reviewId}`, {
+            fetch(`https://snap-with-amit-server.vercel.app/review/${reviewId}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

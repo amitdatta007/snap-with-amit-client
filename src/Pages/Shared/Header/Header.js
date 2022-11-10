@@ -4,12 +4,15 @@ import { AuthContext } from '../../../Contexts/UserContext';
 import NavItem from './NavItem';
 import { Bars4Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import { HiSun, HiMoon, HiUser } from 'react-icons/hi';
+import {useScrollLock} from '../../../Hooks/useScrollLock';
 
 const Header = () => {
     const darkModeData = localStorage.getItem('isDarkMode') || false;
     const [isDarkMode, setIsDarkMode] = useState(darkModeData);
     const [open, setOpen] = useState(false);
     const { user, logOut } = useContext(AuthContext);
+    const {lockScroll, unlockScroll} = useScrollLock();
+    open ? lockScroll() : unlockScroll();
 
     useEffect(() => {
         if(isDarkMode) {
@@ -39,8 +42,12 @@ const Header = () => {
                         className={`bg-base-100 flex absolute md:static w-full h-[calc(100vh-60px)] md:h-fit md:w-fit md:gap-8 left-0 black font-semibold ${open ? 'top-[60px]' : 'top-[-120vh]'} ${open ? 'z-10' : 'z-10'} flex-col md:flex-row justify-center items-center duration-700 ease-in-out gap-2 md:duration-[0s]`}
                     >
                         <NavItem name='Services' path='/services' setOpen={setOpen} />
-                        <NavItem name='Add Service' path='/service/add' setOpen={setOpen} />
-                        <NavItem name='My Reviews' path='/reviews' setOpen={setOpen} />
+                        {
+                            user?.uid && <NavItem name='Add Service' path='/service/add' setOpen={setOpen} />
+                        }
+                        {
+                            user?.uid && <NavItem name='My Reviews' path='/reviews' setOpen={setOpen} />
+                        }
                         <NavItem name='Blogs' path='/blogs' setOpen={setOpen} />
                         <div className='w-[1px] h-5 bg-base-content hidden md:block'></div>
 

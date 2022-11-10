@@ -47,12 +47,12 @@ const router = createBrowserRouter([
             {
                 path: '/service/:id',
                 element: <ServiceDetails />,
-                loader: async({params}) => fetch(`http://localhost:5000/service/${params.id}`)
+                loader: async({params}) => fetch(`https://snap-with-amit-server.vercel.app/service/${params.id}`)
             },
             {
                 path: '/review/edit/:id',
                 element: <EditReview />,
-                loader: async({params}) => fetch(`http://localhost:5000/review/${params.id}`)
+                loader: async({params}) => fetch(`https://snap-with-amit-server.vercel.app/review/${params.id}`)
             }
         ]
     }

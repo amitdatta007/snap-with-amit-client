@@ -16,7 +16,7 @@ const AddService = () => {
             setError('Rating can be 5 or lower.');
             return;
         };
-        fetch('http://localhost:5000/service', {
+        fetch('https://snap-with-amit-server.vercel.app/service', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
